@@ -1,7 +1,7 @@
 function ProductCard({ product, cart, increaseQty, decreaseQty }) {
 
-    const cartItem = cart.find(item => item.id === product.id);
-    const quantity = cartItem ? cartItem.quantity: 0;
+  const cartItem = cart.find(item => item.id === product.id);
+  const quantity = cartItem ? cartItem.quantity : 0;
 
   return (
     <div style={cardStyle}>
@@ -10,16 +10,16 @@ function ProductCard({ product, cart, increaseQty, decreaseQty }) {
 
       {quantity === 0 ? (
         <button
-        style={addBtn}
-        onClick={() => increaseQty(product)}
+          style={addBtn}
+          onClick={() => increaseQty(product)}
         >
           Add to Cart
         </button>
-      ):(
+      ) : (
         <div style={counterContainer}>
           <button
-          style={btnStyle}
-          onClick={() => decreaseQty(product)}
+            style={btnStyle}
+            onClick={() => decreaseQty(product)}
           >
             -
           </button>
@@ -27,8 +27,8 @@ function ProductCard({ product, cart, increaseQty, decreaseQty }) {
           <span style={qtyStyle}>{quantity}</span>
 
           <button
-          style={btnStyle}
-          onClick={() => increaseQty(product)}
+            style={btnStyle}
+            onClick={() => increaseQty(product)}
           >
             +
           </button>
@@ -39,49 +39,49 @@ function ProductCard({ product, cart, increaseQty, decreaseQty }) {
 }
 
 const cardStyle = {
-    border: "1px solid #ccc",
-    padding: "15px",
-    borderRadius: "5px",
-    textAlign: "center",
-    width: "200px",
-    margin: "10px"
-  };
+  border: "1px solid #ccc",
+  padding: "15px",
+  borderRadius: "5px",
+  textAlign: "center",
+  width: "200px",
+  margin: "10px"
+};
 
 const counterContainer = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: "10px",
-    marginBottom: "10px"
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+  marginBottom: "10px"
 };
 
 const btnStyle = {
-    width: "35px",
-    height: "35px",
-    borderRadius: "50%",
-    border: "1px solid #ccc",
-    background: "#f5f5f5",
-    fontSize: "18px",
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "0"
+  width: "35px",
+  height: "35px",
+  borderRadius: "50%",
+  border: "1px solid #ccc",
+  background: "#f5f5f5",
+  fontSize: "18px",
+  cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "0"
 };
 
 const qtyStyle = {
-    fontSize: "18px",
-    fontWeight: "bold",
-    minWidth: "20px"
+  fontSize: "18px",
+  fontWeight: "bold",
+  minWidth: "20px"
 };
 
 const addBtn = {
-    padding: "8px 12px",
-    background: "#007bff",
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer"
+  padding: "8px 12px",
+  background: "#007bff",
+  color: "white",
+  border: "none",
+  borderRadius: "5px",
+  cursor: "pointer"
 };
 
 export default ProductCard;

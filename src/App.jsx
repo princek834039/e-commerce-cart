@@ -36,7 +36,6 @@ function App() {
     );
   }
 function clearCart() {
-  console.log("Clear button clicked");
   setCart([]);
 }
 function removeItem(id) {

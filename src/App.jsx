@@ -37,7 +37,13 @@ function App() {
   }
 function removeItem(id) {
   setCart(prevCart =>
-    prevCart.filter(item => item.id !== id)
+    prevCart
+    .map(item =>
+      item.id === id
+      ?{...item, quantity: item.quantity - 1}
+      : item
+    )
+    .filter(item => item.quantity > 0)
   );
 }
 
@@ -65,7 +71,7 @@ function removeItem(id) {
 
         <Route
           path="/cart"
-          element={<CartPage cart={cart} />}
+          element={<CartPage cart={cart} removeItem={removeItem} />}
         />
       </Routes>
     </div>

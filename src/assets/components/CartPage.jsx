@@ -7,14 +7,14 @@ function CartPage({ cart }) {
   return (
     <div style={{ padding: "20px", marginTop: 0 }}>
 
-      <Link
-        to="/"
-        style={{
-          textDecoration: "none",
-          fontWeight: "bold",
-          display: "inline-block",
-          marginBottom: "10px"
-        }}
+      <Link 
+      to="/"
+      style={{
+        textDecoration: "none",
+        fontWeight: "bold",
+        display: "inline-block",
+        marginBottom: "10px"
+      }}
       >
         ← Back
       </Link>
@@ -24,23 +24,23 @@ function CartPage({ cart }) {
         <p>No items in cart</p>
       ) : (
         <>
-          {cart.map(item => {
-            const itemTotal = item.price * item.quantity;
+        {cart.map(item => {
+          const itemTotal = item.price * item.quantity;
 
-            return (
-              <div key={item.id} style={{ marginBottom: "15px " }}>
-                <h4>{item.title}</h4>
-                <p>Price: ₹{item.price}</p>
-                <p>Quantity: {item.quantity}</p>
-                <p><strong>Subtotal: ₹{itemTotal}</strong></p>
-              </div>
-            );
-          })}
-          <hr />
-          <h2>Grand Total: ₹{totalPrice}</h2>
-        </>
-      )}
-    </div>
+          return (
+            <div key={item.id} style={{marginBottom: "15px "}}>
+             <h4>{item.title}</h4>
+             <p>Price: ₹{item.price}</p>
+             <p>Quantity: {item.quantity}</p>
+             <p><strong>Subtotal: ₹{itemTotal}</strong></p>
+          </div>
+        );
+     })}
+     <hr/>
+     <h2>Grand Total: ₹{totalPrice}</h2>
+  </>
+  )}
+</div>
   );
 }
 

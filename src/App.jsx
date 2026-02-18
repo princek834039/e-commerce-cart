@@ -35,6 +35,10 @@ function App() {
         .filter(item => item.quantity > 0)
     );
   }
+function clearCart() {
+  console.log("Clear button clicked");
+  setCart([]);
+}
 function removeItem(id) {
   setCart(prevCart =>
     prevCart
@@ -71,7 +75,10 @@ function removeItem(id) {
 
         <Route
           path="/cart"
-          element={<CartPage cart={cart} removeItem={removeItem} />}
+          element={<CartPage cart={cart} removeItem={removeItem} 
+          clearCart={clearCart}
+          />
+        }
         />
       </Routes>
     </div>

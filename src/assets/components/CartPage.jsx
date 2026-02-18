@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-function CartPage({ cart, removeItem }) {
+function CartPage({ cart, removeItem, clearCart }) {
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
     0
@@ -52,6 +52,21 @@ function CartPage({ cart, removeItem }) {
           })}
           <hr />
           <h2>Grand Total: ₹{totalPrice}</h2>
+          <button
+            onClick={clearCart}
+            style={{
+              padding: "8px 15px",
+              background: "black",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              marginTop: "10px"
+            }}
+          >
+            Clear Cart
+          </button>
+
         </>
       )}
     </div>

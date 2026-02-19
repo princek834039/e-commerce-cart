@@ -66,7 +66,8 @@ const btnStyle = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  padding: "0"
+  padding: "0",
+  transition: "0.3s"
 };
 
 const qtyStyle = {
@@ -81,7 +82,8 @@ const addBtn = {
   color: "white",
   border: "none",
   borderRadius: "5px",
-  cursor: "pointer"
+  cursor: "pointer",
+  transition: "0.3s"
 };
 
 export default ProductCard;

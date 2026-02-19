@@ -33,8 +33,10 @@ function CartPage({ cart, removeItem, clearCart, increaseQty, decreaseQty }) {
                 <p>Price: ₹{item.price}</p>
                 <p>Quantity: {item.quantity}</p>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                  <button onClick={() => decreaseQty(item)}>-</button>
-                  {/* <span>{item.quantity}</span> */}
+                  <button onClick={() => decreaseQty(item)}
+                  disabled={item.quantity === 1}
+                    >
+                      -</button>
                   <button onClick={() => increaseQty(item)}>+</button>
                 </div>
                 <p><strong>Subtotal: ₹{itemTotal}</strong></p>
@@ -47,7 +49,8 @@ function CartPage({ cart, removeItem, clearCart, increaseQty, decreaseQty }) {
                     border: "none",
                     borderRadius: "5px",
                     cursor: "pointer",
-                    marginTop: "5px"
+                    marginTop: "5px",
+                    transition: "0.3s"
                   }}
                 >
                   Remove
@@ -66,7 +69,8 @@ function CartPage({ cart, removeItem, clearCart, increaseQty, decreaseQty }) {
               border: "none",
               borderRadius: "5px",
               cursor: "pointer",
-              marginTop: "10px"
+              marginTop: "10px",
+              transition: "0.3s"
             }}
           >
             Clear Cart

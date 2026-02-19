@@ -40,50 +40,53 @@ function App() {
         }
         return updatedCart;
       }, []);
-  });
-}
-function clearCart() {
-  setCart([]);
-}
-function removeItem(id) {
-  setCart(prevCart =>
-    prevCart.filter(item => item.id != id)
+    });
+  }
+  function clearCart() {
+    if (window.confirm("Are you sure?")) {
+      setCart([]);
+      alert("Cart cleared successfully!");
+    }
+  }
+  function removeItem(id) {
+    setCart(prevCart =>
+      prevCart.filter(item => item.id != id)
+    );
+  }
+
+  const totalItems = cart.reduce(
+    (total, item) => total + (item.quantity || 0),
+    0
   );
-}
 
-const totalItems = cart.reduce(
-  (total, item) => total + (item.quantity || 0),
-  0
-);
+  return (
+    <div>
+      <Navbar cartCount={totalItems} />
 
-return (
-  <div>
-    <Navbar cartCount={totalItems} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <ProductGrid
+              products={products}
+              cart={cart}
+              increaseQty={increaseQty}
+              decreaseQty={decreaseQty}
+            />
+          }
+        />
 
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <ProductGrid
-            products={products}
-            cart={cart}
+        <Route
+          path="/cart"
+          element={<CartPage cart={cart} removeItem={removeItem}
+            clearCart={clearCart}
             increaseQty={increaseQty}
             decreaseQty={decreaseQty}
           />
-        }
-      />
-
-      <Route
-        path="/cart"
-        element={<CartPage cart={cart} removeItem={removeItem}
-          clearCart={clearCart}
-          increaseQty={increaseQty}
-          decreaseQty={decreaseQty}
+          }
         />
-        }
-      />
-    </Routes>
-  </div>
-);
+      </Routes>
+    </div>
+  );
 }
 export default App;

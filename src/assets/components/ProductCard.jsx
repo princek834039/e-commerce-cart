@@ -5,6 +5,17 @@ function ProductCard({ product, cart, increaseQty, decreaseQty }) {
 
   return (
     <div style={cardStyle}>
+      <img
+        src={product.image}
+        alt={product.title}
+        style={{
+          width: "100%",
+          height: "180",
+          objectFit: "cover",
+          borderRadius: "8px",
+          marginBottom: "10px"
+        }}
+      />
       <h3>{product.title}</h3>
       <p>₹{product.price}</p>
 
@@ -44,7 +55,11 @@ const cardStyle = {
   borderRadius: "5px",
   textAlign: "center",
   width: "200px",
-  margin: "10px"
+  margin: "10px",
+  boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between"
 };
 
 const counterContainer = {
@@ -73,7 +88,8 @@ const btnStyle = {
 const qtyStyle = {
   fontSize: "18px",
   fontWeight: "bold",
-  minWidth: "20px"
+  minWidth: "20px",
+  transition: "0.3s"
 };
 
 const addBtn = {
@@ -85,5 +101,8 @@ const addBtn = {
   cursor: "pointer",
   transition: "0.3s"
 };
+
+
+
 
 export default ProductCard;

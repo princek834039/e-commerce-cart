@@ -25,16 +25,23 @@ function App() {
     });
   }
   function decreaseQty(product) {
-    setCart(prevCart =>
-      prevCart
-        .map(item =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter(item => item.quantity > 0)
-    );
-  }
+    setCart(prevCart => {
+      return prevCart.reduce((updatedCart, item) => {
+
+        if (item.id === product.id) {
+          if (item.quantity > 1) {
+            updatedCart.push({
+              ...item,
+              quantity: item.quantity - 1
+            });
+          }
+        } else {
+          updatedCart.push(item);
+        }
+        return updatedCart;
+      }, []);
+  });
+}
 function clearCart() {
   setCart([]);
 }
@@ -44,37 +51,39 @@ function removeItem(id) {
   );
 }
 
-  const totalItems = cart.reduce(
-    (total, item) => total + (item.quantity || 0),
-    0
-  );
+const totalItems = cart.reduce(
+  (total, item) => total + (item.quantity || 0),
+  0
+);
 
-  return (
-    <div>
-      <Navbar cartCount={totalItems} />
+return (
+  <div>
+    <Navbar cartCount={totalItems} />
 
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <ProductGrid
-              products={products}
-              cart={cart}
-              increaseQty={increaseQty}
-              decreaseQty={decreaseQty}
-            />
-          }
-        />
-
-        <Route
-          path="/cart"
-          element={<CartPage cart={cart} removeItem={removeItem} 
-          clearCart={clearCart}
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <ProductGrid
+            products={products}
+            cart={cart}
+            increaseQty={increaseQty}
+            decreaseQty={decreaseQty}
           />
         }
+      />
+
+      <Route
+        path="/cart"
+        element={<CartPage cart={cart} removeItem={removeItem}
+          clearCart={clearCart}
+          increaseQty={increaseQty}
+          decreaseQty={decreaseQty}
         />
-      </Routes>
-    </div>
-  );
+        }
+      />
+    </Routes>
+  </div>
+);
 }
 export default App;

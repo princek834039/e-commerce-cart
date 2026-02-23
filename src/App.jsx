@@ -4,6 +4,9 @@ import ProductGrid from "./assets/components/ProductGrid.jsx";
 import products from "./assets/components/data/products";
 import { Routes, Route } from "react-router-dom";
 import CartPage from "./assets/components/CartPage.jsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 function App() {
 
@@ -45,14 +48,14 @@ function App() {
   function clearCart() {
     if (window.confirm("Are you sure?")) {
       setCart([]);
-      alert("Cart cleared successfully!");
+      toast.success("Cart cleared successfully!");
     }
   }
   function removeItem(id) {
     setCart(prevCart =>
       prevCart.filter(item => item.id != id)
     );
-  }
+  } 
 
   const totalItems = cart.reduce(
     (total, item) => total + (item.quantity || 0),
@@ -86,6 +89,7 @@ function App() {
           }
         />
       </Routes>
+      <ToastContainer/>
     </div>
   );
 }

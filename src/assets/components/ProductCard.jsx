@@ -54,7 +54,7 @@ const cardStyle = {
   padding: "15px",
   borderRadius: "5px",
   textAlign: "center",
-  width: "200px",
+  width: "220px",
   margin: "10px",
   boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
   display: "flex",

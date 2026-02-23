@@ -33,13 +33,13 @@ A simple and responsive Shopping Cart application built using React and Vite.
 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/princek83039/e-commerce-cart.git
 ```
 
 2️⃣ Navigate into the project folder
 
 ```bash
-cd your-repo-name
+cd e-commerce-cart
 ```
 
 3️⃣ Install dependencies
